@@ -1,0 +1,7 @@
+#supported object Serialization, type index start from 0
+net.jrouter.rpc.serialize.JavaSerialization
+net.jrouter.rpc.serialize.hessian.HessianSerialization
+net.jrouter.rpc.serialize.fastjson.FastJsonSerialization
+net.jrouter.rpc.serialize.jackson.JacksonSerialization
+net.jrouter.rpc.serialize.kryo.KryoSerialization
+net.jrouter.rpc.serialize.fst.FSTSerialization

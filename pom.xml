@@ -3,30 +3,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.jrouter</groupId>
-    <artifactId>jrouter-rpc</artifactId>
+    <artifactId>j-rpc</artifactId>
     <packaging>jar</packaging>
-    <version>1.7.5-SNAPSHOT</version>
-    <name>JRouter-rpc</name>
+    <version>1.7.6-SNAPSHOT</version>
+    <name>J-rpc</name>
     <url>https://github.com/innjj/jrouter-rpc</url>
 
     <dependencies>
-        <!-- pool -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-            <version>2.4.3</version>
-        </dependency>
         <!-- jrouter -->
         <dependency>
             <groupId>net.jrouter</groupId>
-            <artifactId>jrouter-servlet</artifactId>
-            <version>1.7.5-SNAPSHOT</version>
+            <artifactId>jrouter</artifactId>
+            <version>1.7.6-SNAPSHOT</version>
+        </dependency>
+        <!-- id -->
+        <dependency>
+            <groupId>net.jrouter</groupId>
+            <artifactId>j-id</artifactId>
+            <version>1.2</version>
         </dependency>
         <!-- javassist -->
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.22.0-GA</version>
+            <version>3.23.1-GA</version>
+        </dependency>
+        <!-- pool -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.5.0</version>
+            <optional>true</optional>
         </dependency>
         <!-- logback -->
         <dependency>
@@ -53,33 +60,34 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.9.3</version>
+            <version>2.9.6</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.3</version>
+            <version>2.9.6</version>
             <optional>true</optional>
         </dependency>
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.43</version>
+            <version>1.2.47</version>
             <optional>true</optional>
         </dependency>
         <!-- FST -->
         <dependency>
             <groupId>de.ruedigermoeller</groupId>
             <artifactId>fst</artifactId>
-            <version>2.56</version>
+            <version>2.57</version>
+            <optional>true</optional>
         </dependency>
         <!-- kryo -->
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo-shaded</artifactId>
-            <version>4.0.1</version>
+            <version>4.0.2</version>
             <optional>true</optional>
         </dependency>
 
@@ -87,30 +95,22 @@
         <dependency>
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>websocket-client</artifactId>
-            <version>9.2.22.v20170606</version>
+            <version>9.4.11.v20180605</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-websocket</artifactId>
-            <version>8.5.24</version>
+            <version>8.5.32</version>
             <optional>true</optional>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-websocket</artifactId>
-            <version>8.5.24</version>
-            <optional>true</optional>
-        </dependency>
-        -->
 
         <!-- netty -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId> <!-- Use 'netty-all' for 4.0 or above -->
-            <version>4.1.18.Final</version>
+            <version>4.1.25.Final</version>
             <optional>true</optional>
         </dependency>
 
@@ -138,22 +138,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-            <version>1.16.18</version>
+            <version>1.18.0</version>
         </dependency>
 
-        <!-- servlet/jsp -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.2-b02</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- websocket -->
         <dependency>
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
@@ -171,7 +159,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.10</version>
+            <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -182,8 +170,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
@@ -191,7 +179,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.0</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
@@ -200,12 +188,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.0</version>
                 <configuration>
                     <excludes>
                         <!--  排除xml文件 -->
                         <exclude>logback.xml</exclude>
-                        <exclude>pmd-rules.xml</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -219,48 +206,57 @@
                     <classpathScope>compile</classpathScope>
                 </configuration>
             </plugin>
-
-            <!-- pmd -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.8</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-core</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-java</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                            <goal>cpd-check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <linkXref>false</linkXref>
-                    <!-- pmd代码校验并打印错误 -Dpmd.skip=true -->
-                    <failOnViolation>false</failOnViolation>
-                    <printFailingErrors>true</printFailingErrors>
-                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-                    <rulesets>
-                        <ruleset>${project.build.outputDirectory}/pmd-rules.xml</ruleset>
-                    </rulesets>
-                    <excludes>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>pmd</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- pmd -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>3.10.0</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>net.sourceforge.pmd</groupId>
+                                <artifactId>pmd-core</artifactId>
+                                <version>6.5.0</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.pmd</groupId>
+                                <artifactId>pmd-java</artifactId>
+                                <version>6.5.0</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                    <goal>cpd-check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <linkXRef>false</linkXRef>
+                            <!-- pmd代码校验并打印错误 -Dpmd.skip=true -->
+                            <failOnViolation>false</failOnViolation>
+                            <printFailingErrors>true</printFailingErrors>
+                            <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                            <rulesets>
+                                <ruleset>${pmd.rule.file}</ruleset>
+                            </rulesets>
+                            <excludes>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>release</id>
             <activation>
@@ -277,7 +273,6 @@
                             <excludes>
                                 <!--  排除xml文件 -->
                                 <exclude>logback.xml</exclude>
-                                <exclude>pmd-rules.xml</exclude>
                             </excludes>
                         </configuration>
                         <executions>
@@ -293,7 +288,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.10.4</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -328,9 +323,9 @@
         </profile>
     </profiles>
     <properties>
-        <spring.version>4.3.13.RELEASE</spring.version>
+        <spring.version>5.0.7.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <pmd.version>6.0.0</pmd.version>
+        <pmd.rule.file></pmd.rule.file>
     </properties>
     <licenses>
         <license>
@@ -340,9 +335,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:git@github.com:innjj/jrouter-rpc.git</connection>
-        <developerConnection>scm:git:git@github.com:innjj/jrouter-rpc.git</developerConnection>
-        <url>https://github.com/innjj/jrouter-rpc</url>
+        <connection>scm:git:git@github.com:innjj/j-rpc.git</connection>
+        <developerConnection>scm:git:git@github.com:innjj/j-rpc.git</developerConnection>
+        <url>https://github.com/innjj/j-rpc</url>
     </scm>
     <developers>
         <developer>

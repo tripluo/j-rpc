@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util.xsd">
     <description>jrouter-rpc与springframework集成的配置文件</description>
-    <context:component-scan base-package="jrouter.rpc"/>
+    <context:component-scan base-package="net.jrouter.rpc"/>
 
     <!-- require ServletContext
     <bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">

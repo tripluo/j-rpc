@@ -1,3 +1,5 @@
 /nb-configuration.xml
 /target
 /tomcat.9999
+/.idea
+/j-rpc.iml
